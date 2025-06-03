@@ -1,6 +1,7 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
 const TestReporter = require('./utils/TestReporter');
+require('colors');
 
 (async function loginTest() {
     const reporter = new TestReporter();
@@ -17,18 +18,15 @@ const TestReporter = require('./utils/TestReporter');
         let message = await flash.getText();
 
         if (message.includes('You logged into a secure area!')) {
-            console.log('✅ Login successful!');
-            reporter.logResult('Login Test', 'PASSED');
+            await reporter.logResult('Login Test', 'PASSED');
         } else {
             const screenshotPath = await reporter.captureScreenshot(driver, 'login-failure');
-            console.log('❌ Login failed.');
-            reporter.logResult('Login Test', 'FAILED', new Error('Login validation failed'), screenshotPath);
+            await reporter.logResult('Login Test', 'FAILED', new Error('Login validation failed'), screenshotPath);
         }
 
     } catch (err) {
         const screenshotPath = await reporter.captureScreenshot(driver, 'login-error');
-        console.error('Test failed:', err);
-        reporter.logResult('Login Test', 'ERROR', err, screenshotPath);
+        await reporter.logResult('Login Test', 'ERROR', err, screenshotPath);
     } finally {
         await driver.quit();
     }
