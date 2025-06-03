@@ -1,0 +1,232 @@
+[
+  {
+    "testName": "Login Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:12:54.668Z",
+    "error": null,
+    "screenshot": null
+  },
+  {
+    "testName": "UI Form Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:13:31.040Z",
+    "error": null,
+    "screenshot": null
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:13:50.088Z",
+    "error": null,
+    "screenshot": null
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "FAILED",
+    "timestamp": "2025-06-03T07:19:52.718Z",
+    "executionTime": 1338,
+    "error": "Form submission failed. Expected 'submitted!' but got 'Received!'",
+    "screenshot": "/Users/jasonwilliam/tests/selenium/reports/screenshots/form-submission-failed-failure-1748935192600.png",
+    "additionalData": {
+      "formFields": {
+        "text": "John Doe",
+        "message": "This is a test message"
+      },
+      "actualMessage": "Received!"
+    }
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:21:16.162Z",
+    "executionTime": 7302,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formFields": {
+        "text": "John Doe",
+        "message": "This is a test message"
+      }
+    }
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:25:36.671Z",
+    "executionTime": 1350,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formFields": {
+        "text": "John Doe",
+        "message": "This is a test message"
+      }
+    }
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:27:17.915Z",
+    "executionTime": 2700,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formFields": {
+        "text": "John Doe",
+        "message": "This is a test message"
+      }
+    }
+  },
+  {
+    "testName": "UI Form Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:28:37.437Z",
+    "executionTime": 25183,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formData": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "gender": "Male",
+        "mobile": "1234567890",
+        "hobbies": [
+          "Reading",
+          "Music"
+        ],
+        "state": "NCR",
+        "city": "Delhi"
+      }
+    }
+  },
+  {
+    "testName": "UI Form Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:29:28.929Z",
+    "executionTime": 13613,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formData": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "gender": "Male",
+        "mobile": "1234567890",
+        "hobbies": [
+          "Reading",
+          "Music"
+        ],
+        "state": "NCR",
+        "city": "Delhi"
+      }
+    }
+  },
+  {
+    "testName": "Login Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:29:54.962Z",
+    "executionTime": null,
+    "error": null,
+    "screenshot": null
+  },
+  {
+    "testName": "Login Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T07:32:40.240Z",
+    "executionTime": null,
+    "error": null,
+    "screenshot": null
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T10:27:51.128Z",
+    "executionTime": 2328,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formFields": {
+        "text": "John Doe",
+        "message": "This is a test message"
+      }
+    }
+  },
+  {
+    "testName": "Form Submission Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T10:28:20.866Z",
+    "executionTime": 7542,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formFields": {
+        "text": "John Doe",
+        "message": "This is a test message"
+      }
+    }
+  },
+  {
+    "testName": "Login Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T10:28:37.949Z",
+    "executionTime": null,
+    "error": null,
+    "screenshot": null
+  },
+  {
+    "testName": "UI Form Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T10:29:04.048Z",
+    "executionTime": 11807,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formData": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "gender": "Male",
+        "mobile": "1234567890",
+        "hobbies": [
+          "Reading",
+          "Music"
+        ],
+        "state": "NCR",
+        "city": "Delhi"
+      }
+    }
+  },
+  {
+    "testName": "UI Form Test",
+    "status": "FAILED",
+    "timestamp": "2025-06-03T10:36:51.351Z",
+    "executionTime": 9992,
+    "error": "Unexpected modal title: Thanks for submitting the form",
+    "screenshot": "/Users/jasonwilliam/tests/selenium/reports/screenshots/ui-form-verification-failed-failure-1748947011174.png"
+  },
+  {
+    "testName": "UI Form Test",
+    "status": "PASSED",
+    "timestamp": "2025-06-03T10:38:17.837Z",
+    "executionTime": 9335,
+    "error": null,
+    "screenshot": null,
+    "additionalData": {
+      "formData": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "gender": "Male",
+        "mobile": "1234567890",
+        "hobbies": [
+          "Reading",
+          "Music"
+        ],
+        "state": "NCR",
+        "city": "Delhi"
+      }
+    }
+  }
+]

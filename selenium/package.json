@@ -10,6 +10,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "colors": "^1.4.0",
+    "path": "^0.12.7",
     "selenium-webdriver": "^4.33.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^11.3.0",
+    "mochawesome": "^7.1.3"
   }
 }

@@ -1,5 +1,8 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
+const TestReporter = require('./utils/TestReporter');
 const fs = require('fs');
+const path = require('path');
+require('colors');
 
 async function removeAds(driver) {
   try {
@@ -16,46 +19,65 @@ async function removeAds(driver) {
 }
 
 (async function uiTest() {
-  let driver = await new Builder().forBrowser('firefox').build();
+    const reporter = new TestReporter();
+    let driver = await new Builder().forBrowser('firefox').build();
+    const startTime = Date.now();
 
-  try {
-    await driver.get('https://demoqa.com/automation-practice-form');
+    try {
+        await driver.get('https://demoqa.com/automation-practice-form');
+        await removeAds(driver);
 
-    await removeAds(driver);
+        // Fill form fields
+        await driver.findElement(By.id('firstName')).sendKeys('John');
+        await driver.findElement(By.id('lastName')).sendKeys('Doe');
+        await driver.findElement(By.id('userEmail')).sendKeys('john.doe@example.com');
+        await driver.sleep(500);
+        await driver.findElement(By.xpath("//label[text()='Male']")).click();
+        await driver.findElement(By.id('userNumber')).sendKeys('1234567890');
+        await driver.findElement(By.xpath("//label[text()='Reading']")).click();
+        await driver.findElement(By.xpath("//label[text()='Music']")).click();
 
-    await driver.findElement(By.id('firstName')).sendKeys('John');
+        // Select state and city
+        await driver.executeScript("arguments[0].scrollIntoView()", await driver.findElement(By.id("state")));
+        await driver.findElement(By.id('state')).click();
+        await driver.findElement(By.xpath("//div[text()='NCR']")).click();
+        await driver.findElement(By.id('city')).click();
+        await driver.findElement(By.xpath("//div[text()='Delhi']")).click();
 
-    await driver.findElement(By.id('lastName')).sendKeys('Doe');
+        // Submit form
+        await driver.findElement(By.id('submit')).click();
+        
+        // Wait for and verify modal
+        await driver.wait(until.elementLocated(By.id('example-modal-sizes-title-lg')), 5000);
+        const modalTitle = await driver.findElement(By.id('example-modal-sizes-title-lg')).getText();
+        const executionTime = Date.now() - startTime;
 
-    await driver.findElement(By.id('userEmail')).sendKeys('john.doe@example.com');
+        if (modalTitle === 'Thanks for submitting the form') {
+            await reporter.logResult('UI Form Test', 'PASSED', executionTime, null, null, {
+                formData: {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    email: 'john.doe@example.com',
+                    gender: 'Male',
+                    mobile: '1234567890',
+                    hobbies: ['Reading', 'Music'],
+                    state: 'NCR',
+                    city: 'Delhi'
+                }
+            });
+        } else {
+            const screenshotPath = await reporter.captureFailureScreenshot(driver, 'ui-form-verification-failed');
+            await reporter.logResult('UI Form Test', 'FAILED', executionTime, 
+                new Error(`Unexpected modal title: ${modalTitle}`), 
+                screenshotPath
+            );
+        }
 
-    await driver.sleep(500);
-
-    await driver.findElement(By.xpath("//label[text()='Male']")).click();
-
-    await driver.findElement(By.id('userNumber')).sendKeys('1234567890');
-
-    await driver.findElement(By.xpath("//label[text()='Reading']")).click();
-    await driver.findElement(By.xpath("//label[text()='Music']")).click();
-
-    await driver.executeScript("arguments[0].scrollIntoView()", await driver.findElement(By.id("state")));
-    await driver.findElement(By.id('state')).click();
-    await driver.findElement(By.xpath("//div[text()='NCR']")).click();
-
-    await driver.findElement(By.id('city')).click();
-    await driver.findElement(By.xpath("//div[text()='Delhi']")).click();
-
-    await driver.findElement(By.id('submit')).click();
-
-    await driver.wait(until.elementLocated(By.id('example-modal-sizes-title-lg')), 5000);
-
-    let screenshot = await driver.takeScreenshot();
-    fs.writeFileSync('test-screenshot.png', screenshot, 'base64');
-
-    console.log("✅ Test completed. Screenshot saved as test-screenshot.png");
-  } catch (err) {
-    console.error("❌ Test failed:", err);
-  } finally {
-    await driver.quit();
-  }
+    } catch (err) {
+        const executionTime = Date.now() - startTime;
+        const screenshotPath = await reporter.captureFailureScreenshot(driver, 'ui-form-error');
+        await reporter.logResult('UI Form Test', 'FAILED', executionTime, err, screenshotPath);
+    } finally {
+        await driver.quit();
+    }
 })();
