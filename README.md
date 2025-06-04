@@ -75,7 +75,7 @@ The test includes:
 - Firefox WebDriver: Browser driver for Firefox
 
 
-📄 View the detailed [Weekly Summary Report](./tests/selenium/summaryReport.md)
+📄 View the detailed [Weekly Summary Report](./selenium/summaryReport.md)
 
 
 
