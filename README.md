@@ -74,6 +74,10 @@ The test includes:
 - selenium-webdriver: For browser automation
 - Firefox WebDriver: Browser driver for Firefox
 
+
+📄 View the detailed [Weekly Summary Report](./summaryReport.md)
+
+
 ## Author
 
 Jason William
